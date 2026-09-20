@@ -177,8 +177,7 @@ function HeroTicketMockup() {
       <div className="absolute -inset-4 -z-10 rounded-[2rem] bg-burgundy/5 blur-2xl" />
       <div className="relative rotate-[-3deg] rounded-2xl border border-ink/10 bg-paper p-6 shadow-[0_20px_50px_-15px_rgba(33,23,18,0.35)] transition-transform duration-500 hover:rotate-0">
         <div className="flex items-start justify-between">
-          <div className="flex h-11 w-11 items-center justify-center rounded-lg border border-burgundy/25 bg-cream">
-            <Film className="h-5 w-5 text-burgundy" />
+          <div className="flex h-11 w-11 items-center justify-center">
           </div>
           <div className="text-right">
             <p className="text-[10px] font-semibold uppercase tracking-widest text-ink-muted">Seat No.</p>
@@ -187,7 +186,6 @@ function HeroTicketMockup() {
         </div>
 
         <p className="mt-5 font-serif text-xl text-ink">ifthiswasamovie</p>
-        <p className="mt-1 text-[11px] font-semibold uppercase tracking-widest text-burgundy">Dedicate to anyone</p>
         <p className="mt-3 text-sm leading-relaxed text-ink-soft">
           Each ticket includes a movie title, a message, and a seat number. Explore, create, and send tickets.
         </p>
@@ -195,12 +193,8 @@ function HeroTicketMockup() {
         <div className="my-5 border-t border-dashed border-ink/20" />
 
         <div className="flex items-end justify-between">
-          <div className="flex items-end gap-[3px]">
-            {[3, 5, 2, 6, 4, 2, 5, 3, 6, 2, 4, 3, 5, 2, 6, 3].map((h, i) => (
-              <span key={i} className="w-[3px] bg-ink/70" style={{ height: `${h * 4}px` }} />
-            ))}
-          </div>
-          <span className="text-[10px] font-medium uppercase tracking-widest text-ink-muted">Admit One</span>
+          
+          <span className="text-[10px] font-medium uppercase tracking-widest text-ink-muted">Send a ticket now</span>
         </div>
       </div>
     </div>

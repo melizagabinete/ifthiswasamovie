@@ -102,8 +102,8 @@ export default {
         },
       },
       animation: {
-        'scroll-left': 'scroll-left 40s linear infinite',
-        'scroll-right': 'scroll-right 40s linear infinite',
+        'scroll-left': 'scroll-left 10s linear infinite',
+        'scroll-right': 'scroll-right 10s linear infinite',
       },
     },
   },
