@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply relative min-w-[320px] min-h-screen antialiased;
+  @apply bg-cream text-ink;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@layer base {
+  :root {
+    /* Warm beige page, burgundy primary, ink text */
+    --background: 38 47% 95%;       /* cream */
+    --foreground: 20 20% 11%;       /* ink */
+    --card: 36 44% 92%;             /* paper */
+    --card-foreground: 20 20% 11%;
+    --popover: 36 44% 96%;
+    --popover-foreground: 20 20% 11%;
+    --primary: 355 76% 24%;         /* burgundy */
+    --primary-foreground: 38 47% 96%;
+    --secondary: 36 40% 88%;
+    --secondary-foreground: 20 20% 11%;
+    --muted: 36 30% 88%;
+    --muted-foreground: 25 12% 40%;
+    --accent: 355 76% 24%;
+    --accent-foreground: 38 47% 96%;
+    --destructive: 0 72% 42%;
+    --destructive-foreground: 38 47% 96%;
+    --border: 30 25% 82%;
+    --input: 30 25% 82%;
+    --ring: 355 76% 24%;
+    --chart-1: 355 76% 24%;
+    --chart-2: 32 45% 55%;
+    --chart-3: 20 20% 30%;
+    --chart-4: 43 60% 55%;
+    --chart-5: 10 55% 40%;
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@layer utilities {
+  .animate-fadeIn {
+    animation: fadeIn 0.2s ease-in-out;
+  }
+  .animate-scaleIn {
+    animation: scaleIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+}
+/* globals.css or component CSS */
+.hover\:pause-animation:hover {
+  animation-play-state: paused;
+}
