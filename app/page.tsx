@@ -187,7 +187,7 @@ function HeroTicketMockup() {
 
         <p className="mt-5 font-serif text-xl text-ink">ifthiswasamovie</p>
         <p className="mt-3 text-sm leading-relaxed text-ink-soft">
-          Each ticket includes a movie title, a message, and a seat number. Explore, create, and send tickets.
+          Each ticket includes a movie title, a message, and a seat number. Explore, create, and send tickets now.
         </p>
 
         <div className="my-5 border-t border-dashed border-ink/20" />
