@@ -29,12 +29,28 @@ export interface FtsTicketRow {
   seat_number: string;
   barcode_word: string;
   image_data: string;
-  created_at: string | number;
+  created_at: string | number | null;
 }
 
 export interface PostWithParsedVotes extends Omit<SelectPost, 'votes'> {
   votes: string[];
 }
+
+const parseTicketDate = (value: string | number | null): Date | null => {
+  if (value === null || value === '') return null;
+
+  if (typeof value === 'number') {
+    const milliseconds = value < 1e10 ? value * 1000 : value;
+    const date = new Date(milliseconds);
+    return isNaN(date.getTime()) ? null : date;
+  }
+
+  const numericValue = Number(value);
+  const date = Number.isNaN(numericValue)
+    ? new Date(value)
+    : new Date(numericValue < 1e10 ? numericValue * 1000 : numericValue);
+  return isNaN(date.getTime()) ? null : date;
+};
 
 export interface PaginatedPostsResult {
   posts: PostWithParsedVotes[];
@@ -119,7 +135,7 @@ export async function getTickets(
         seatNumber: row.seat_number,
         barcodeWord: row.barcode_word,
         imageData: row.image_data || '',
-        createdAt: typeof row.created_at === 'number' ? new Date(row.created_at * 1000) : new Date(row.created_at),
+        createdAt: parseTicketDate(row.created_at),
       }));
     } else {
       const [countResult] = await db.select({ count: count() }).from(tickets);

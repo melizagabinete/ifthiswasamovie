@@ -35,12 +35,32 @@ export async function GET(request: Request) {
     // Pass search directly to lib/db.ts - it handles FTS5 wildcard conversion
     const result = await getTickets(search, limit, page);
 
-const formatDate = (date: unknown): string => {
-      if (!date) return new Date().toISOString();
-      if (date instanceof Date) return isNaN(date.getTime()) ? new Date().toISOString() : date.toISOString();
-      if (typeof date === 'number') return isNaN(date) ? new Date().toISOString() : new Date(date).toISOString();
-      if (typeof date === 'string') return isNaN(Number(date)) ? new Date().toISOString() : new Date(Number(date)).toISOString();
-      return new Date().toISOString();
+    const formatDate = (date: unknown): string => {
+      if (!date) return '';
+
+      if (date instanceof Date) {
+        return isNaN(date.getTime()) ? '' : date.toISOString();
+      }
+
+      if (typeof date === 'number') {
+        if (isNaN(date)) return '';
+        const milliseconds = date < 1e10 ? date * 1000 : date;
+        const parsedDate = new Date(milliseconds);
+        return isNaN(parsedDate.getTime()) ? '' : parsedDate.toISOString();
+      }
+
+      if (typeof date === 'string') {
+        const trimmedDate = date.trim();
+        if (!trimmedDate) return '';
+
+        const numericDate = Number(trimmedDate);
+        const parsedDate = Number.isNaN(numericDate)
+          ? new Date(trimmedDate)
+          : new Date(numericDate < 1e10 ? numericDate * 1000 : numericDate);
+        return isNaN(parsedDate.getTime()) ? '' : parsedDate.toISOString();
+      }
+
+      return '';
     };
 
     const formattedTickets = result.tickets
