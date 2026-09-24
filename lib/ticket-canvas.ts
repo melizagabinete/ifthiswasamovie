@@ -218,7 +218,7 @@ function drawTextContent(
   ctx.font = `400 ${messageFont}px Inter, 'Segoe UI', sans-serif`;
   let messageY = cursorY + 0.081 * height;
   const bottomBound = POSTER.bottom * height;
-  const maxMessageLines = Math.max(2, Math.floor((bottomBound - messageY) / messageLineHeight));
+  const maxMessageLines = Math.max(4, Math.floor((bottomBound - messageY) / messageLineHeight));
 
   let messageLines = wrapText(ctx, ticketData.message || '', textMaxWidth);
   const didTruncate = messageLines.length > maxMessageLines;
