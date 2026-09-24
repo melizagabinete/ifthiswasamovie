@@ -206,7 +206,7 @@ export const TicketPreview = memo(function TicketPreview({
       ctx.font = `400 ${messageFont}px Inter, 'Segoe UI', sans-serif`;
       let messageY = cursorY + 0.1 * height;
       const bottomBound = POSTER.bottom * height;
-      const maxMessageLines = Math.max(1, Math.floor((bottomBound - messageY) / messageLineHeight));
+      const maxMessageLines = Math.max(3, Math.floor((bottomBound - messageY) / messageLineHeight));
 
       let messageLines = wrapText(message || "", textMaxWidth);
       const didTruncate = messageLines.length > maxMessageLines;
